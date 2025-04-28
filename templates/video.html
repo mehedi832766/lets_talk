@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webcam Object Detection</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+</head>
+<body class="bg-linear-to-r from-cyan-300 to-blue-500 flex flex-col items-center justify-center w-screen h-screen">
+    <h1 class=" text-white text-2xl font-bold p-2 m-2">Let's Talk</h1>
+    <img class="bg-yellow-700/30 md:h-150 md:w-150 h-100 w-100 flex-auto rounded-xl border-4 border-gray-600 m-2" id="video" src="/video_feed" alt="Video Feed">
+    <p class="bg-gray-400 text-white text-2xl text-center p-2 w-3/4 h-14 m-2 rounded-xl border-4  border-gray-600"><span id="detected-word" class=" text-white text-2xl">Generated Words</span></p>
+
+
+
+    <script>
+        // Fetch the word every second
+        setInterval(async () => {
+            const response = await fetch('/get_word');
+            const data = await response.json();
+            if (data.word) {
+                document.getElementById('detected-word').textContent = data.word;
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
