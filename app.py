@@ -73,9 +73,9 @@ class Detection:
 
     def predict(self, img, classes=[], conf=0.35):
         if classes:
-            results = self.model.predict(img, classes=classes, conf=conf, half=True )
+            results = self.model.predict(img, classes=classes, conf=conf )
         else:
-            results = self.model.predict(img, conf=conf, half=True)
+            results = self.model.predict(img, conf=conf)
 
         return results
 
@@ -186,3 +186,4 @@ if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5000)
     #http://localhost:8000/video for video source
     #http://localhost:8000 for image source
+
