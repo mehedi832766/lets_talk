@@ -3,5 +3,6 @@ services:
     name: bangla-yolo-flask
     runtime: python
     pythonVersion: 3.10.12
+    plan: free
     buildCommand: "pip install -r requirements.txt"
     startCommand: "gunicorn app:app"
